@@ -26,6 +26,18 @@ class FieldBuilder implements FieldBuilderInterface
     }
 
     /**
+     * @param \Phauthentic\Validator\FieldCollectionInterface $fieldCollection
+     * @return \Phauthentic\Validator\FieldBuilder
+     */
+    public function withFieldCollection(FieldCollectionInterface $fieldCollection): self
+    {
+        $that = clone $this;
+        $that->fieldCollection = $fieldCollection;
+
+        return $that;
+    }
+
+    /**
      * @param string $fieldName
      * @return \Phauthentic\Validator\FieldInterface
      */
@@ -61,8 +73,7 @@ class FieldBuilder implements FieldBuilderInterface
 
     /**
      * {{@inheritDoc}}
-     *
-     * @throws \Phauthentic\Validator\Exception\FieldCollectionException
+     * @throws \Phauthentic\Validator\Exception\FieldCollectionException|\Phauthentic\Validator\Exception\ValidatorException
      */
     public function add(string $fieldName, string $ruleName, array $arguments = []): RuleDefinitionInterface
     {
@@ -75,9 +86,20 @@ class FieldBuilder implements FieldBuilderInterface
     }
 
     /**
+     * @param string $fieldName
+     * @param array<string, array<mixed, mixed>>
+     */
+    public function addWithManyRules(string $fieldName, array $rules)
+    {
+        foreach ($rules as $ruleName => $ruleArguments) {
+            $this->add($fieldName, $ruleName, $ruleArguments);
+        }
+    }
+
+    /**
      * @param string $field
      * @return \Phauthentic\Validator\Rule\RuleDefinitionInterface
-     * @throws \Phauthentic\Validator\Exception\FieldCollectionException
+     * @throws \Phauthentic\Validator\Exception\FieldCollectionException|\Phauthentic\Validator\Exception\ValidatorException
      */
     public function notEmpty(string $field): RuleDefinitionInterface
     {
@@ -89,7 +111,7 @@ class FieldBuilder implements FieldBuilderInterface
      * @param int|float $start
      * @param int|float $end
      * @return \Phauthentic\Validator\Rule\RuleDefinitionInterface
-     * @throws \Phauthentic\Validator\Exception\FieldCollectionException
+     * @throws \Phauthentic\Validator\Exception\FieldCollectionException|\Phauthentic\Validator\Exception\ValidatorException
      */
     public function between(string $field, int|float $start, int|float $end): RuleDefinitionInterface
     {
@@ -103,7 +125,7 @@ class FieldBuilder implements FieldBuilderInterface
      * @param string $field
      * @param int $maxLength
      * @return \Phauthentic\Validator\Rule\RuleDefinitionInterface
-     * @throws \Phauthentic\Validator\Exception\FieldCollectionException
+     * @throws \Phauthentic\Validator\Exception\FieldCollectionException|\Phauthentic\Validator\Exception\ValidatorException
      */
     public function maxLength(string $field, int $maxLength): RuleDefinitionInterface
     {
@@ -116,7 +138,7 @@ class FieldBuilder implements FieldBuilderInterface
      * @param string $field
      * @param int $minLength
      * @return \Phauthentic\Validator\Rule\RuleDefinitionInterface
-     * @throws \Phauthentic\Validator\Exception\FieldCollectionException
+     * @throws \Phauthentic\Validator\Exception\FieldCollectionException|\Phauthentic\Validator\Exception\ValidatorException
      */
     public function minLength(string $field, int $minLength): RuleDefinitionInterface
     {
@@ -130,7 +152,7 @@ class FieldBuilder implements FieldBuilderInterface
      * @param string $operator
      * @param int|float $value
      * @return \Phauthentic\Validator\Rule\RuleDefinitionInterface
-     * @throws \Phauthentic\Validator\Exception\FieldCollectionException
+     * @throws \Phauthentic\Validator\Exception\FieldCollectionException|\Phauthentic\Validator\Exception\ValidatorException
      */
     public function comparison(string $field, string $operator, int|float $value): RuleDefinitionInterface
     {

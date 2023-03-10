@@ -263,17 +263,22 @@ class ArrayHelper
     public static function arrayIsList(array $array): bool
     {
         if (!function_exists('array_is_list')) {
-            $i = 0;
-            foreach ($array as $k => $v) {
-                if ($k !== $i++) {
-                    return false;
-                }
-            }
-
-            return true;
+            return static::arrayIsListFallback($array);
         }
 
         return array_is_list($array);
+    }
+
+    protected static function arrayIsListFallback(array $array): bool
+    {
+        $i = 0;
+        foreach ($array as $k => $v) {
+            if ($k !== $i++) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /**
