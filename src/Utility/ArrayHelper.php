@@ -12,7 +12,10 @@ use function is_callable;
 use function str_replace;
 
 /**
- *
+ * @copyright Copyright (c) Taylor Otwell
+ * @license MIT
+ * @link https://github.com/illuminate/support/blob/v5.3.23/Arr.php Origin of the code.
+ * @link https://github.com/illuminate/support/blob/master/LICENSE.md License of illuminate/support
  */
 class ArrayHelper
 {
@@ -183,11 +186,16 @@ class ArrayHelper
 
         if ($segment === '*') {
             $target = [];
-        } elseif ($segments) {
-            if (array_key_exists($segment, $target)) {
-                static::arrayUnset($target[$segment], $segments);
-            }
-        } elseif (array_key_exists($segment, $target)) {
+            return $target;
+        }
+
+        if (!array_key_exists($segment, $target)) {
+            return $target;
+        }
+
+        if ($segments) {
+            static::arrayUnset($target[$segment], $segments);
+        } else {
             unset($target[$segment]);
         }
 
@@ -256,7 +264,7 @@ class ArrayHelper
     /**
      * Returns true if the array is not a list (helper to handle PHP 8.1 compatibility)
      *
-     * @param array<mixed, mixed> $array
+     * @param array<int, mixed> $array
      *
      * @return bool
      */
@@ -269,6 +277,10 @@ class ArrayHelper
         return array_is_list($array);
     }
 
+    /**
+     * @param array<int, mixed> $array
+     * @return bool
+     */
     protected static function arrayIsListFallback(array $array): bool
     {
         $i = 0;

@@ -10,7 +10,7 @@ use Phauthentic\Validator\Rule\RuleInterface;
 /**
  *
  */
-class BuilderAwareValidator extends Validator
+abstract class BuilderAwareValidator extends Validator
 {
     public function __construct(
         protected FieldCollectionInterface $fieldCollection,
@@ -25,5 +25,5 @@ class BuilderAwareValidator extends Validator
     /**
      *
      */
-    abstract protected function defineFields(FieldBuilderInterface $fieldBuilder);
+    abstract protected function defineFields(FieldBuilderInterface $fieldBuilder): void;
 }

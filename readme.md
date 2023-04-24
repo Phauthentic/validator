@@ -1,10 +1,10 @@
 # Phauthentic Validator
 
-![php 8.x](https://img.shields.io/static/v1?label=php&message=8.x&color=787CB5&style=for-the-badge)
+![PHP >= 8.0](https://img.shields.io/static/v1?label=PHP&message=8.*&color=787CB5&style=for-the-badge&logo=php)
 ![phpstan Level 8](https://img.shields.io/static/v1?label=phpstan&message=Level%208&color=%3CCOLOR%3E&style=for-the-badge)
 ![License: MIT](https://img.shields.io/static/v1?label=License&message=MIT&color=%3CCOLOR%3E&style=for-the-badge)
 
-A [SOLID][1] validation library.
+A [SOLID][1] validation library that also tries to do [KISS][2].
 
 * Designed with maximum flexibility for customization in mind.
 * Tries to be as easy to use and set up as possible.
@@ -51,3 +51,4 @@ if (!$result->isValid()) {
 - Copyright (c) 2022 Florian Krämer
 
 [1]: https://en.wikipedia.org/wiki/SOLID
+[2]: https://en.wikipedia.org/wiki/KISS_principle

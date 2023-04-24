@@ -87,9 +87,10 @@ class FieldBuilder implements FieldBuilderInterface
 
     /**
      * @param string $fieldName
-     * @param array<string, array<mixed, mixed>>
+     * @param array<string, array<string, mixed>> $rules
+     * @return void
      */
-    public function addWithManyRules(string $fieldName, array $rules)
+    public function addWithManyRules(string $fieldName, array $rules): void
     {
         foreach ($rules as $ruleName => $ruleArguments) {
             $this->add($fieldName, $ruleName, $ruleArguments);

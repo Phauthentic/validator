@@ -19,7 +19,7 @@ class ValidatorFactory implements ValidatorFactoryInterface
     /**
      * @inheritDoc
      */
-    public function createContext(array $context): ContextInterface
+    public function createContextFromArray(array $context): ContextInterface
     {
         return new Context(...$context);
     }
@@ -27,7 +27,7 @@ class ValidatorFactory implements ValidatorFactoryInterface
     /**
      * @inheritDoc
      */
-    public function createError(array $error): ErrorInterface
+    public function createErrorFromArray(array $error): ErrorInterface
     {
         return new Error(...$error);
     }
