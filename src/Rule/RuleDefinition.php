@@ -17,11 +17,11 @@ class RuleDefinition implements RuleDefinitionInterface
 
     /**
      * @param string $ruleName
-     * @param array<string, mixed> $arguments
+     * @param \Phauthentic\Validator\Rule\ArgumentCollectionInterface $arguments
      */
     public function __construct(
         protected string $ruleName,
-        protected array $arguments = []
+        protected ArgumentCollectionInterface $arguments
     ) {
     }
 
@@ -46,7 +46,7 @@ class RuleDefinition implements RuleDefinitionInterface
     /**
      * @inheritDoc
      */
-    public function getArguments(): array
+    public function getArguments(): ArgumentCollectionInterface
     {
         return $this->arguments;
     }

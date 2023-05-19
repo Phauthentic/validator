@@ -27,8 +27,11 @@ class IsJson implements RuleInterface
         return 'rule.isJson';
     }
 
-    public function validate(mixed $value): bool
-    {
+    public function validate(
+        mixed $value,
+        ArgumentCollectionInterface $arguments,
+        ContextInterface $context
+    ): bool {
         if (!is_string($value) || empty($value)) {
             return false;
         }

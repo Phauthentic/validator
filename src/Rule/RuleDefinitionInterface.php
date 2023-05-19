@@ -22,9 +22,9 @@ interface RuleDefinitionInterface
     public function getMessage(): ?string;
 
     /**
-     * @return array <string, mixed>
+     * @return \Phauthentic\Validator\Rule\ArgumentCollectionInterface
      */
-    public function getArguments(): array;
+    public function getArguments(): ArgumentCollectionInterface;
 
     /**
      * @return string

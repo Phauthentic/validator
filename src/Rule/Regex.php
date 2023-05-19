@@ -24,8 +24,11 @@ class Regex implements RuleInterface
         return 'The value `%s` does not match the expected pattern.';
     }
 
-    public function validate(mixed $value, string $pattern): bool
-    {
-        return !preg_match($pattern, $value);
+    public function validate(
+        mixed $value,
+        ArgumentCollectionInterface $arguments,
+        ContextInterface $context
+    ): bool {
+        return !preg_match($arguments->get('pattern'), $value);
     }
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Phauthentic\Validator;
 
 use Phauthentic\Validator\Exception\ValidatorException;
+use Phauthentic\Validator\Rule\ArgumentCollection;
 use Phauthentic\Validator\Rule\Context;
 use Phauthentic\Validator\Rule\ContextInterface;
 use Phauthentic\Validator\Rule\RuleCollectionInterface;
@@ -120,7 +121,6 @@ class Validator implements ValidatorInterface
         FieldInterface $field,
     ): void {
         $rule = $this->ruleCollection->get($ruleDefinition->getRuleName());
-
         $arguments = $ruleDefinition->getArguments();
         $context = $this->createContext([
             'value' => $value,
@@ -129,16 +129,9 @@ class Validator implements ValidatorInterface
             'rule' => $rule,
         ]);
 
-        array_unshift($arguments, $value);
-        $arguments[] = $context;
-
         $this->assertRuleHasAValidateMethod($rule);
 
-        if (!method_exists($rule, 'validate')) {
-            throw new ValidatorException('Rule does not implement a method validate().');
-        }
-
-        if (!$rule->validate(...$arguments)) {
+        if (!$rule->validate($value, $arguments, $context)) {
             $error = $this->createError([
                 'field' => $field,
                 'rule' => $rule,

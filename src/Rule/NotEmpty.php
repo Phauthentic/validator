@@ -20,8 +20,11 @@ class NotEmpty extends AbstractRule
         return static::NAME;
     }
 
-    public function validate(mixed $value): bool
-    {
+    public function validate(
+        mixed $value,
+        ArgumentCollectionInterface $arguments,
+        ContextInterface $context
+    ): bool {
         return !empty($value);
     }
 }

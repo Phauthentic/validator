@@ -7,6 +7,7 @@ namespace Phauthentic\Test\Validator;
 use Phauthentic\Validator\ErrorCollection;
 use Phauthentic\Validator\Field;
 use Phauthentic\Validator\GlossaryMessageFormatter;
+use Phauthentic\Validator\Rule\ArgumentCollection;
 use Phauthentic\Validator\Rule\Between;
 use Phauthentic\Validator\Rule\Context;
 use Phauthentic\Validator\Rule\RuleDefinition;
@@ -21,7 +22,7 @@ class MessageFormatterTest extends TestCase
     {
         $ruleDefinition = new RuleDefinition(
             Between::NAME,
-            ['min' => 3, 'max' => 10]
+            ArgumentCollection::fromArray(['min' => 3, 'max' => 10])
         );
 
         $field = new Field('test', new ErrorCollection());

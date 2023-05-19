@@ -25,7 +25,7 @@ class RuleCollectionException extends ValidatorException
      * @param string $ruleName
      * @return self
      */
-    public static function ruledWithNameDoesNotExists(string $ruleName): self
+    public static function ruleWithNameDoesNotExists(string $ruleName): self
     {
         return new self(sprintf(
             'A rule with the name `%s` does not exist in the collection.',

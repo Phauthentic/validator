@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Phauthentic\Validator;
 
+use Phauthentic\Validator\Rule\ArgumentCollection;
 use Phauthentic\Validator\Rule\RuleDefinition;
 use Phauthentic\Validator\Rule\RuleDefinitionInterface;
 
@@ -53,7 +54,10 @@ class FieldBuilder implements FieldBuilderInterface
      */
     protected function createRuleDefinition(string $ruleName, array $arguments): RuleDefinitionInterface
     {
-        return new RuleDefinition($ruleName, $arguments);
+        return new RuleDefinition(
+            $ruleName,
+            ArgumentCollection::fromArray($arguments)
+        );
     }
 
     /**
@@ -88,13 +92,17 @@ class FieldBuilder implements FieldBuilderInterface
     /**
      * @param string $fieldName
      * @param array<string, array<string, mixed>> $rules
-     * @return void
+     * @return \Phauthentic\Validator\FieldBuilderInterface
+     * @throws \Phauthentic\Validator\Exception\FieldCollectionException
+     * @throws \Phauthentic\Validator\Exception\ValidatorException
      */
-    public function addWithManyRules(string $fieldName, array $rules): void
+    public function addWithManyRules(string $fieldName, array $rules): FieldBuilderInterface
     {
         foreach ($rules as $ruleName => $ruleArguments) {
             $this->add($fieldName, $ruleName, $ruleArguments);
         }
+
+        return $this;
     }
 
     /**

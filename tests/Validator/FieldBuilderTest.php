@@ -26,7 +26,7 @@ class FieldBuilderTest extends TestCase
         $this->assertCount(2, $fieldCollection);
         $this->assertTrue($fieldCollection->has('name'));
         $this->assertTrue($fieldCollection->has('project'));
-        $this->assertEquals(['minLength' => 3], $fieldCollection->get('project')->getRuleDefinition('minLength')->getArguments());
-        $this->assertEquals(['maxLength' => 10], $fieldCollection->get('project')->getRuleDefinition('maxLength')->getArguments());
+        $this->assertEquals(['minLength' => 3], $fieldCollection->get('project')->getRuleDefinition('minLength')->getArguments()->toArray());
+        $this->assertEquals(['maxLength' => 10], $fieldCollection->get('project')->getRuleDefinition('maxLength')->getArguments()->toArray());
     }
 }

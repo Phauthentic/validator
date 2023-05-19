@@ -31,4 +31,13 @@ interface RuleInterface
      * @return string
      */
     public function getMessage(): string;
+
+    /**
+     *
+     */
+    public function validate(
+        mixed $value,
+        ArgumentCollectionInterface $arguments,
+        ContextInterface $context
+    ): bool;
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Phauthentic\Validator;
 
+use Phauthentic\Validator\Rule\ArgumentCollectionInterface;
 use Phauthentic\Validator\Rule\ContextInterface;
 use Phauthentic\Validator\Rule\RuleCollectionInterface;
 
@@ -35,4 +36,10 @@ interface ValidatorFactoryInterface
      * @return \Phauthentic\Validator\ErrorInterface
      */
     public function createErrorFromArray(array $error): ErrorInterface;
+
+    /**
+     * @param array<string, mixed> $arguments
+     * @return \Phauthentic\Validator\Rule\ArgumentCollectionInterface
+     */
+    public function createArgumentCollectionFromArray(array $arguments): ArgumentCollectionInterface;
 }
