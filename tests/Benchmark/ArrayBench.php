@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Phauthentic\Test\Benchmark;
@@ -36,7 +37,7 @@ class ArrayBench
      */
     public function benchArrayHas()
     {
-        $result = ArrayHelper::arrayHas($this->getArray(),'foo.1.bar.id');
+        $result = ArrayHelper::arrayHas($this->getArray(), 'foo.1.bar.id');
         assert($result);
     }
 
@@ -56,7 +57,7 @@ class ArrayBench
      */
     public function benchArrayGet()
     {
-        $result = ArrayHelper::arrayGet($this->getArray(),'foo.1.bar.id');
+        $result = ArrayHelper::arrayGet($this->getArray(), 'foo.1.bar.id');
         assert($result);
     }
 
