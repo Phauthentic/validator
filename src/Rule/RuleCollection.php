@@ -27,6 +27,9 @@ class RuleCollection implements RuleCollectionInterface
         }
     }
 
+    /**
+     * @inheritDoc
+     */
     public function add(RuleInterface $rule): void
     {
         if (isset($this->rules[$rule->getName()])) {
@@ -36,15 +39,21 @@ class RuleCollection implements RuleCollectionInterface
         $this->rules[$rule->getName()] = $rule;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function has(string $ruleName): bool
     {
         return isset($this->rules[$ruleName]);
     }
 
+    /**
+     * @inheritDoc
+     */
     public function get(string $ruleName): RuleInterface
     {
         if (!$this->has($ruleName)) {
-            throw RuleCollectionException::ruledWithNameDoesNotExists($ruleName);
+            throw RuleCollectionException::ruleWithNameDoesNotExists($ruleName);
         }
 
         return $this->rules[$ruleName];

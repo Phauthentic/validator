@@ -97,4 +97,9 @@ class ArgumentCollection implements ArgumentCollectionInterface
             $type
         ));
     }
+
+    public function toArray(): array
+    {
+        return $this->arguments;
+    }
 }

@@ -44,7 +44,10 @@ class BasicValidatorTest extends TestCase
 
         $fieldBuilder = FieldBuilder::create(new FieldCollection());
         $fieldBuilder->add('project.id', NotEmpty::NAME);
-        $fieldBuilder->add('project.name', Between::NAME, [3,10]);
+        $fieldBuilder->add('project.name', Between::NAME, [
+            Between::MIN => 3,
+            Between::MAX => 10
+        ]);
         $fieldBuilder->add('project.tasks.*.title', NotEmpty::NAME);
 
         $validator = new Validator(

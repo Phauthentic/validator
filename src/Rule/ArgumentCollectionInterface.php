@@ -29,4 +29,9 @@ interface ArgumentCollectionInterface
      * @return mixed
      */
     public function get(string $name): mixed;
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function toArray(): array;
 }

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Phauthentic\Validator;
 
+use Phauthentic\Validator\Rule\ArgumentCollection;
+use Phauthentic\Validator\Rule\ArgumentCollectionInterface;
 use Phauthentic\Validator\Rule\Between;
 use Phauthentic\Validator\Rule\Context;
 use Phauthentic\Validator\Rule\ContextInterface;
@@ -77,5 +79,10 @@ class ValidatorFactory implements ValidatorFactoryInterface
     public function createField(string $name): FieldInterface
     {
         return new Field($name, $this->createErrorCollection());
+    }
+
+    public function createArgumentCollectionFromArray(array $arguments): ArgumentCollectionInterface
+    {
+        return ArgumentCollection::fromArray($arguments);
     }
 }

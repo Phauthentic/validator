@@ -74,7 +74,8 @@ class GlossaryMessageFormatter implements MessageFormatterInterface
         $templateVars = $context
             ->getField()
             ->getRuleDefinition($context->getRule()->getName())
-            ->getArguments();
+            ->getArguments()
+            ->toArray();
 
         $templateVars['value'] = $context->getValue();
         $templateVars['fieldName'] = $context->getField()->getAlias();

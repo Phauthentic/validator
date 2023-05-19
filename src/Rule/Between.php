@@ -7,9 +7,17 @@ namespace Phauthentic\Validator\Rule;
 /**
  *
  */
-class Between implements RuleInterface
+class Between extends AbstractRule
 {
     public const NAME = 'between';
+
+    public const MIN = 'min';
+    public const MAX = 'max';
+
+    protected array $requiredArguments = [
+        self::MAX,
+        self::MIN,
+    ];
 
     /**
      * @inheritDoc
@@ -27,11 +35,19 @@ class Between implements RuleInterface
         return 'The value {{value}} for the field {{fieldName}} is not between {{min}} and {{max}}';
     }
 
-    public function validate(mixed $value, int|float $min, int|float $max): bool
-    {
+    public function validate(
+        mixed $value,
+        ArgumentCollectionInterface $arguments,
+        ContextInterface $context
+    ): bool {
+        $this->checkRequiredArguments($arguments);
+
         if (!is_numeric($value)) {
             return false;
         }
+
+        $min = $arguments->get(self::MIN);
+        $max = $arguments->get(self::MAX);
 
         return ($value >= $min && $value <= $max);
     }
