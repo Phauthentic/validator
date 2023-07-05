@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Phauthentic\Validator;
+namespace Phauthentic\Validator\Field;
 
 use Phauthentic\Validator\Rule\RuleDefinitionInterface;
 
@@ -14,13 +14,13 @@ interface FieldBuilderInterface
     /**
      * Creates a new builder using the given collection
      *
-     * @param \Phauthentic\Validator\FieldCollectionInterface $fieldCollection
+     * @param \Phauthentic\Validator\Field\FieldCollectionInterface $fieldCollection
      * @return self
      */
     public static function create(FieldCollectionInterface $fieldCollection): self;
 
     /**
-     * @return \Phauthentic\Validator\FieldCollectionInterface
+     * @return \Phauthentic\Validator\Field\FieldCollectionInterface
      */
     public function getFieldCollection(): FieldCollectionInterface;
 

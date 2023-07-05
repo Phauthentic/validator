@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Phauthentic\Validator;
+namespace Phauthentic\Validator\Field;
 
 use Countable;
 use IteratorAggregate;
@@ -23,26 +23,24 @@ interface FieldCollectionInterface extends IteratorAggregate, Countable
     /**
      * Adds a field to the collection.
      *
-     * @throws \Phauthentic\Validator\Exception\FieldCollectionException If a field with the given name already exists in the collection.
-     *
-     * @param \Phauthentic\Validator\FieldInterface $field
+     * @param \Phauthentic\Validator\Field\FieldInterface $field
      * @return void
+     *@throws \Phauthentic\Validator\Exception\FieldCollectionException If a field with the given name already exists in the collection.
      */
     public function add(FieldInterface $field): void;
 
     /**
      * @param  string $field
-     * @return \Phauthentic\Validator\FieldInterface
+     * @return \Phauthentic\Validator\Field\FieldInterface
      * @throws \Phauthentic\Validator\Exception\ValidatorException
      */
 
     /**
      * Gets a field by its name.
      *
-     * @throws \Phauthentic\Validator\Exception\FieldCollectionException If a field with the given name does not exist in the collection.
-     *
      * @param string $fieldName
-     * @return \Phauthentic\Validator\FieldInterface
+     * @return \Phauthentic\Validator\Field\FieldInterface
+     *@throws \Phauthentic\Validator\Exception\FieldCollectionException If a field with the given name does not exist in the collection.
      */
     public function get(string $fieldName): FieldInterface;
 

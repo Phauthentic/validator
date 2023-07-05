@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use Phauthentic\Validator\ErrorCollection;
-use Phauthentic\Validator\FieldBuilder;
-use Phauthentic\Validator\FieldCollection;
+use Phauthentic\Validator\Error\ErrorCollection;
+use Phauthentic\Validator\Field\FieldBuilder;
+use Phauthentic\Validator\Field\FieldCollection;
 use Phauthentic\Validator\GlossaryMessageFormatter;
 use Phauthentic\Validator\Rule\Between;
 use Phauthentic\Validator\Rule\NotEmpty;

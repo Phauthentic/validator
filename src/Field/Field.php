@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Phauthentic\Validator;
+namespace Phauthentic\Validator\Field;
 
+use Phauthentic\Validator\Error\ErrorCollectionInterface;
 use Phauthentic\Validator\Exception\FieldException;
 use Phauthentic\Validator\Exception\RuleDefinitionExistsException;
 use Phauthentic\Validator\Rule\RuleDefinitionInterface;
@@ -22,7 +23,7 @@ class Field implements FieldInterface
 
     /**
      * @param string $fieldName
-     * @param \Phauthentic\Validator\ErrorCollectionInterface $errorCollection
+     * @param \Phauthentic\Validator\Error\ErrorCollectionInterface $errorCollection
      * @param array<string, \Phauthentic\Validator\Rule\RuleDefinitionInterface> $ruleDefinitions
      */
     public function __construct(

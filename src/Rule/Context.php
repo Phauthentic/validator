@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Phauthentic\Validator\Rule;
 
-use Phauthentic\Validator\FieldInterface;
+use Phauthentic\Validator\Field\FieldInterface;
 
 /**
  * @inheritDoc
@@ -14,7 +14,7 @@ class Context implements ContextInterface
     /**
      * @param mixed $value
      * @param array<mixed, mixed> $data
-     * @param \Phauthentic\Validator\FieldInterface $field
+     * @param \Phauthentic\Validator\Field\FieldInterface $field
      * @param \Phauthentic\Validator\Rule\RuleInterface $rule
      */
     public function __construct(

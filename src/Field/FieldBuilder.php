@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Phauthentic\Validator;
+namespace Phauthentic\Validator\Field;
 
+use Phauthentic\Validator\Error\ErrorCollection;
 use Phauthentic\Validator\Rule\ArgumentCollection;
 use Phauthentic\Validator\Rule\RuleDefinition;
 use Phauthentic\Validator\Rule\RuleDefinitionInterface;
@@ -27,7 +28,7 @@ class FieldBuilder implements FieldBuilderInterface
     }
 
     /**
-     * @param \Phauthentic\Validator\FieldCollectionInterface $fieldCollection
+     * @param \Phauthentic\Validator\Field\FieldCollectionInterface $fieldCollection
      * @return \Phauthentic\Validator\FieldBuilder
      */
     public function withFieldCollection(FieldCollectionInterface $fieldCollection): self
@@ -40,7 +41,7 @@ class FieldBuilder implements FieldBuilderInterface
 
     /**
      * @param string $fieldName
-     * @return \Phauthentic\Validator\FieldInterface
+     * @return \Phauthentic\Validator\Field\FieldInterface
      */
     protected function createField(string $fieldName): FieldInterface
     {
@@ -92,7 +93,7 @@ class FieldBuilder implements FieldBuilderInterface
     /**
      * @param string $fieldName
      * @param array<string, array<string, mixed>> $rules
-     * @return \Phauthentic\Validator\FieldBuilderInterface
+     * @return \Phauthentic\Validator\Field\FieldBuilderInterface
      * @throws \Phauthentic\Validator\Exception\FieldCollectionException
      * @throws \Phauthentic\Validator\Exception\ValidatorException
      */

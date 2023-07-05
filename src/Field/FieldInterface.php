@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Phauthentic\Validator;
+namespace Phauthentic\Validator\Field;
 
+use Phauthentic\Validator\Error\ErrorCollectionInterface;
 use Phauthentic\Validator\Rule\RuleDefinitionInterface;
 
 /**
@@ -72,7 +73,7 @@ interface FieldInterface
     /**
      * Returns a collection of errors.
      *
-     * @return \Phauthentic\Validator\ErrorCollectionInterface
+     * @return \Phauthentic\Validator\Error\ErrorCollectionInterface
      */
     public function getErrors(): ErrorCollectionInterface;
 }

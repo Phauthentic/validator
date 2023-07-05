@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Phauthentic\Test\Validator;
 
-use Phauthentic\Validator\ErrorCollection;
-use Phauthentic\Validator\FieldBuilder;
-use Phauthentic\Validator\FieldCollection;
+use Phauthentic\Validator\Error\ErrorCollection;
 use Phauthentic\Validator\MessageFormatter\GlossaryMessageFormatter;
 use Phauthentic\Validator\Rule\Between;
 use Phauthentic\Validator\Rule\NotEmpty;
@@ -42,7 +40,7 @@ class BasicValidatorTest extends TestCase
             ]
         ];
 
-        $fieldBuilder = FieldBuilder::create(new FieldCollection());
+        $fieldBuilder = \Phauthentic\Validator\Field\FieldBuilder::create(new \Phauthentic\Validator\Field\FieldCollection());
         $fieldBuilder->add('project.id', NotEmpty::NAME);
         $fieldBuilder->add('project.name', Between::NAME, [
             Between::MIN => 3,
@@ -53,7 +51,7 @@ class BasicValidatorTest extends TestCase
         $validator = new Validator(
             $fieldBuilder->getFieldCollection(),
             $this->factory->createRuleCollection(),
-            new ErrorCollection(),
+            new \Phauthentic\Validator\Error\ErrorCollection(),
             new GlossaryMessageFormatter()
         );
 
@@ -80,7 +78,7 @@ class BasicValidatorTest extends TestCase
             ]
         ];
 
-        $fieldBuilder = FieldBuilder::create(new FieldCollection());
+        $fieldBuilder = \Phauthentic\Validator\Field\FieldBuilder::create(new \Phauthentic\Validator\Field\FieldCollection());
         $fieldBuilder->add('project.tasks.*.comments.*.text', NotEmpty::NAME);
 
         $validator = new Validator(

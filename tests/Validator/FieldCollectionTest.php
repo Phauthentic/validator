@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Phauthentic\Test\Validator;
 
-use Phauthentic\Validator\ErrorCollection;
-use Phauthentic\Validator\Field;
-use Phauthentic\Validator\FieldCollection;
+use Phauthentic\Validator\Error\ErrorCollection;
+use Phauthentic\Validator\Field\Field;
+use Phauthentic\Validator\Field\FieldCollection;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -25,7 +25,7 @@ class FieldCollectionTest extends TestCase
         $collection = new FieldCollection();
         $this->assertEquals(0, $collection->count());
 
-        $collection->add(new Field('test', new ErrorCollection()));
+        $collection->add(new Field('test', new \Phauthentic\Validator\Error\ErrorCollection()));
 
         $this->expectExceptionMessage('A field with the name `test` already exist in the collection.');
         $collection->add(new Field('test', new ErrorCollection()));

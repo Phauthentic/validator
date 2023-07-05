@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Phauthentic\Validator;
+namespace Phauthentic\Validator\Error;
 
+use Phauthentic\Validator\Field\FieldInterface;
 use Phauthentic\Validator\Rule\RuleInterface;
 
 /**
@@ -14,7 +15,7 @@ interface ErrorInterface
     /**
      * Returns the field object that has the error.
      *
-     * @return \Phauthentic\Validator\FieldInterface
+     * @return \Phauthentic\Validator\Field\FieldInterface
      */
     public function getField(): FieldInterface;
 

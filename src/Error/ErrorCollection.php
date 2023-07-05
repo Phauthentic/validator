@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Phauthentic\Validator;
+namespace Phauthentic\Validator\Error;
 
 use ArrayIterator;
 use Traversable;
@@ -13,7 +13,7 @@ use Traversable;
 class ErrorCollection implements ErrorCollectionInterface
 {
     /**
-     * @var array<string, array<string, \Phauthentic\Validator\ErrorInterface>>
+     * @var array<string, array<string, \Phauthentic\Validator\Error\ErrorInterface>>
      */
     protected array $errors = [];
     public function add(ErrorInterface $error): void
@@ -36,7 +36,7 @@ class ErrorCollection implements ErrorCollectionInterface
     }
 
     /**
-     * @return array<string, array<string, \Phauthentic\Validator\ErrorInterface>>
+     * @return array<string, array<string, \Phauthentic\Validator\Error\ErrorInterface>>
      */
     public function toArray(): array
     {

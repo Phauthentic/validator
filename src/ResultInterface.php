@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Phauthentic\Validator;
 
+use Phauthentic\Validator\Error\ErrorCollectionInterface;
+
 /**
  * The validation result.
  */
@@ -15,7 +17,7 @@ interface ResultInterface
     public function isValid(): bool;
 
     /**
-     * @return \Phauthentic\Validator\ErrorCollectionInterface
+     * @return \Phauthentic\Validator\Error\ErrorCollectionInterface
      */
     public function getErrors(): ErrorCollectionInterface;
 

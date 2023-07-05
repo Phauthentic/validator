@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Phauthentic\Test\Validator\Rule;
 
-use Phauthentic\Validator\ErrorCollection;
-use Phauthentic\Validator\Field;
+use Phauthentic\Validator\Error\ErrorCollection;
+use Phauthentic\Validator\Field\Field;
 use Phauthentic\Validator\Rule\Context;
 use Phauthentic\Validator\Rule\ContextInterface;
 use PHPUnit\Framework\TestCase;

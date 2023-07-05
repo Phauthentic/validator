@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Phauthentic\Test\Validator;
 
-use Phauthentic\Validator\FieldBuilder;
-use Phauthentic\Validator\FieldCollection;
+use Phauthentic\Validator\Field\FieldBuilder;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -15,7 +14,7 @@ class FieldBuilderTest extends TestCase
 {
     public function testRuleBuilder(): void
     {
-        $fieldBuilder = FieldBuilder::create(new FieldCollection());
+        $fieldBuilder = FieldBuilder::create(new \Phauthentic\Validator\Field\FieldCollection());
 
         $fieldBuilder->add('name', 'notEmpty');
         $fieldBuilder->minLength('project', 3);

@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Phauthentic\Validator;
 
+use Phauthentic\Validator\Error\ErrorCollectionInterface;
+use Phauthentic\Validator\Field\FieldBuilderInterface;
+use Phauthentic\Validator\Field\FieldCollectionInterface;
 use Phauthentic\Validator\MessageFormatter\MessageFormatterInterface;
 use Phauthentic\Validator\Rule\RuleCollectionInterface;
 

@@ -4,6 +4,13 @@ declare(strict_types=1);
 
 namespace Phauthentic\Validator;
 
+use Phauthentic\Validator\Error\Error;
+use Phauthentic\Validator\Error\ErrorCollection;
+use Phauthentic\Validator\Error\ErrorCollectionInterface;
+use Phauthentic\Validator\Error\ErrorInterface;
+use Phauthentic\Validator\Field\Field;
+use Phauthentic\Validator\Field\FieldCollectionInterface;
+use Phauthentic\Validator\Field\FieldInterface;
 use Phauthentic\Validator\MessageFormatter\MessageFormatterInterface;
 use Phauthentic\Validator\Rule\Context;
 use Phauthentic\Validator\Rule\ContextInterface;
@@ -54,7 +61,7 @@ class Validator implements ValidatorInterface
 
     /**
      * @param bool $isValid
-     * @param \Phauthentic\Validator\ErrorCollectionInterface $errorCollection
+     * @param \Phauthentic\Validator\Error\ErrorCollectionInterface $errorCollection
      * @return \Phauthentic\Validator\ResultInterface
      */
     protected function createResult(
@@ -68,7 +75,7 @@ class Validator implements ValidatorInterface
     }
 
     /**
-     * @param \Phauthentic\Validator\FieldInterface $field
+     * @param \Phauthentic\Validator\Field\FieldInterface $field
      * @return void
      */
     protected function validateField(FieldInterface $field): void
@@ -99,7 +106,7 @@ class Validator implements ValidatorInterface
 
     /**
      * @param array<string, mixed> $error
-     * @return \Phauthentic\Validator\ErrorInterface
+     * @return \Phauthentic\Validator\Error\ErrorInterface
      */
     protected function createError(array $error): ErrorInterface
     {
@@ -109,7 +116,7 @@ class Validator implements ValidatorInterface
     /**
      * @param \Phauthentic\Validator\Rule\RuleDefinitionInterface $ruleDefinition
      * @param mixed $value
-     * @param \Phauthentic\Validator\FieldInterface $field
+     * @param \Phauthentic\Validator\Field\FieldInterface $field
      * @return void
      */
     protected function applyRule(
@@ -168,8 +175,8 @@ class Validator implements ValidatorInterface
 
     /**
      * @param array<mixed, mixed> $data
-     * @param \Phauthentic\Validator\FieldInterface $field
-     * @return array<int, \Phauthentic\Validator\FieldInterface>
+     * @param \Phauthentic\Validator\Field\FieldInterface $field
+     * @return array<int, \Phauthentic\Validator\Field\FieldInterface>
      */
     protected function parseArrayField(array $data, FieldInterface $field): array
     {

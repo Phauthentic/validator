@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Phauthentic\Validator;
+namespace Phauthentic\Validator\Field;
 
 use ArrayIterator;
 use Phauthentic\Validator\Exception\FieldCollectionException;
@@ -14,7 +14,7 @@ use Traversable;
 class FieldCollection implements FieldCollectionInterface
 {
     /**
-     * @var array<string, \Phauthentic\Validator\FieldInterface>
+     * @var array<string, \Phauthentic\Validator\Field\FieldInterface>
      */
     protected array $fields = [];
 
@@ -51,7 +51,7 @@ class FieldCollection implements FieldCollectionInterface
 
     /**
      * @param string $fieldName
-     * @return \Phauthentic\Validator\FieldInterface
+     * @return \Phauthentic\Validator\Field\FieldInterface
      * @throws \Phauthentic\Validator\Exception\ValidatorException
      */
     public function get(string $fieldName): FieldInterface

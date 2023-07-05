@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Phauthentic\Test\Validator\MessageFormatter;
 
-use Phauthentic\Validator\ErrorCollection;
-use Phauthentic\Validator\Field;
+use Phauthentic\Validator\Error\ErrorCollection;
+use Phauthentic\Validator\Field\Field;
 use Phauthentic\Validator\MessageFormatter\GlossaryMessageFormatter;
 use Phauthentic\Validator\Rule\ArgumentCollection;
 use Phauthentic\Validator\Rule\Between;

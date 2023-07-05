@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Phauthentic\Validator;
+namespace Phauthentic\Validator\Error;
 
+use Phauthentic\Validator\Field\FieldInterface;
 use Phauthentic\Validator\Rule\RuleInterface;
 
 /**

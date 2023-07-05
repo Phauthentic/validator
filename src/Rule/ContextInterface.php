@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Phauthentic\Validator\Rule;
 
-use Phauthentic\Validator\FieldInterface;
+use Phauthentic\Validator\Field\FieldInterface;
 
 /**
  * The context object is used to pass data between the otherwise separate
