@@ -7,11 +7,9 @@ namespace Phauthentic\Validator\Rule;
 /**
  *
  */
-class Regex implements RuleInterface
+class IsBool implements RuleInterface
 {
-    public const NAME = 'regex';
-
-    protected const MESSAGE = 'The value `%s` does not match the expected pattern.';
+    public const NAME = 'isBool';
 
     /**
      * @inheritDoc
@@ -21,9 +19,12 @@ class Regex implements RuleInterface
         return static::NAME;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function getMessage(): string
     {
-        return self::MESSAGE;
+        return 'rule.isBool';
     }
 
     public function validate(
@@ -31,11 +32,14 @@ class Regex implements RuleInterface
         ArgumentCollectionInterface $arguments,
         ContextInterface $context
     ): bool {
-        return $this->testRegex($arguments->get('pattern'), $value);
-    }
+        if (is_string($value)) {
+            return $value === 'true' || $value === 'false';
+        }
 
-    protected function testRegex(string $pattern, mixed $value): bool
-    {
-        return (bool)preg_match($pattern, $value);
+        if (is_int($value)) {
+            return $value === 1 || $value === 0;
+        }
+
+        return is_bool($value);
     }
 }

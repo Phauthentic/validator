@@ -42,13 +42,9 @@ class Between extends AbstractRule
     ): bool {
         $this->checkRequiredArguments($arguments);
 
-        if (!is_numeric($value)) {
-            return false;
-        }
-
         $min = $arguments->get(self::MIN);
         $max = $arguments->get(self::MAX);
 
-        return ($value >= $min && $value <= $max);
+        return $value >= $min && $value <= $max;
     }
 }

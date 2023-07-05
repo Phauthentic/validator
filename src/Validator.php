@@ -4,13 +4,11 @@ declare(strict_types=1);
 
 namespace Phauthentic\Validator;
 
-use Phauthentic\Validator\Exception\ValidatorException;
-use Phauthentic\Validator\Rule\ArgumentCollection;
+use Phauthentic\Validator\MessageFormatter\MessageFormatterInterface;
 use Phauthentic\Validator\Rule\Context;
 use Phauthentic\Validator\Rule\ContextInterface;
 use Phauthentic\Validator\Rule\RuleCollectionInterface;
 use Phauthentic\Validator\Rule\RuleDefinitionInterface;
-use Phauthentic\Validator\Rule\RuleInterface;
 use Phauthentic\Validator\Utility\ArrayHelper;
 
 /**
@@ -113,7 +111,6 @@ class Validator implements ValidatorInterface
      * @param mixed $value
      * @param \Phauthentic\Validator\FieldInterface $field
      * @return void
-     * @throws \Phauthentic\Validator\Exception\ValidatorException
      */
     protected function applyRule(
         RuleDefinitionInterface $ruleDefinition,
@@ -129,8 +126,6 @@ class Validator implements ValidatorInterface
             'rule' => $rule,
         ]);
 
-        $this->assertRuleHasAValidateMethod($rule);
-
         if (!$rule->validate($value, $arguments, $context)) {
             $error = $this->createError([
                 'field' => $field,
@@ -140,21 +135,6 @@ class Validator implements ValidatorInterface
 
             $field->getErrors()->add($error);
             $this->errorCollection->add($error);
-        }
-    }
-
-    /**
-     * @param \Phauthentic\Validator\Rule\RuleInterface $rule
-     * @return void
-     * @throws \Phauthentic\Validator\Exception\ValidatorException
-     */
-    protected function assertRuleHasAValidateMethod(RuleInterface $rule): void
-    {
-        if (!method_exists($rule, 'validate')) {
-            throw new ValidatorException(sprintf(
-                'The rule `%s` does not implement a `validate()` method.',
-                $rule->getName()
-            ));
         }
     }
 

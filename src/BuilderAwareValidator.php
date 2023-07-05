@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Phauthentic\Validator;
 
+use Phauthentic\Validator\MessageFormatter\MessageFormatterInterface;
 use Phauthentic\Validator\Rule\RuleCollectionInterface;
-use Phauthentic\Validator\Rule\RuleInterface;
 
 /**
  *
@@ -19,6 +19,13 @@ abstract class BuilderAwareValidator extends Validator
         protected MessageFormatterInterface $messageFormatter,
         protected FieldBuilderInterface $fieldBuilder
     ) {
+        parent::__construct(
+            $this->fieldCollection,
+            $this->ruleCollection,
+            $this->errorCollection,
+            $this->messageFormatter
+        );
+
         $this->defineFields($this->fieldBuilder);
     }
 

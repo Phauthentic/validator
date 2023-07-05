@@ -7,7 +7,7 @@ namespace Phauthentic\Test\Validator;
 use Phauthentic\Validator\ErrorCollection;
 use Phauthentic\Validator\FieldBuilder;
 use Phauthentic\Validator\FieldCollection;
-use Phauthentic\Validator\GlossaryMessageFormatter;
+use Phauthentic\Validator\MessageFormatter\GlossaryMessageFormatter;
 use Phauthentic\Validator\Rule\Between;
 use Phauthentic\Validator\Rule\NotEmpty;
 use Phauthentic\Validator\Validator;

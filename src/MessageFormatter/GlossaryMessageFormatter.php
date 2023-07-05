@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Phauthentic\Validator;
+namespace Phauthentic\Validator\MessageFormatter;
 
 use Phauthentic\Validator\Rule\ContextInterface;
 

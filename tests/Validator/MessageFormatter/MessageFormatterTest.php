@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Phauthentic\Test\Validator;
+namespace Phauthentic\Test\Validator\MessageFormatter;
 
 use Phauthentic\Validator\ErrorCollection;
 use Phauthentic\Validator\Field;
-use Phauthentic\Validator\GlossaryMessageFormatter;
+use Phauthentic\Validator\MessageFormatter\GlossaryMessageFormatter;
 use Phauthentic\Validator\Rule\ArgumentCollection;
 use Phauthentic\Validator\Rule\Between;
 use Phauthentic\Validator\Rule\Context;

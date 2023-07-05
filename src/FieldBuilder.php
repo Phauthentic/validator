@@ -178,4 +178,32 @@ class FieldBuilder implements FieldBuilderInterface
     {
         return $this->fieldCollection;
     }
+
+    /**
+     * @param string $name
+     * @param array<int, mixed> $arguments
+     * @return mixed
+     * @throws \Phauthentic\Validator\Exception\FieldCollectionException
+     * @throws \Phauthentic\Validator\Exception\ValidatorException
+     */
+    public function __call(string $name, array $arguments): mixed
+    {
+        if ($this->argumentsMatchExpectationForAdd($arguments)) {
+            return $this->add($arguments[0], $name, $arguments[1]);
+        }
+
+        return null;
+    }
+
+    /**
+     * @param array<int, mixed> $arguments
+     *
+     * @return bool
+     */
+    protected function argumentsMatchExpectationForAdd(array $arguments): bool
+    {
+        return count($arguments) === 2
+            && is_string($arguments[0])
+            && is_array($arguments[1]);
+    }
 }
