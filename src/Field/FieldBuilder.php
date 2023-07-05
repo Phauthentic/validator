@@ -29,7 +29,7 @@ class FieldBuilder implements FieldBuilderInterface
 
     /**
      * @param \Phauthentic\Validator\Field\FieldCollectionInterface $fieldCollection
-     * @return \Phauthentic\Validator\FieldBuilder
+     * @return self
      */
     public function withFieldCollection(FieldCollectionInterface $fieldCollection): self
     {

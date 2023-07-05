@@ -39,6 +39,7 @@
         "phpcbf": "bin/phpcbf --standard=phpcs.xml src/ tests/",
         "phpcs": "bin/phpcbf && bin/phpcs --version && bin/phpcs --standard=phpcs.xml src/ tests/",
         "phpstan": "bin/phpstan",
-        "phpunit": "bin/phpunit"
+        "phpunit": "bin/phpunit",
+        "analyze": "composer phpcbf && composer phpcs && composer phpstan && composer phpunit"
     }
 }

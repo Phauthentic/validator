@@ -37,7 +37,7 @@ interface ErrorInterface
      * Sets a message
      *
      * @param string $message
-     * @return \Phauthentic\Validator\ErrorInterface
+     * @return \Phauthentic\Validator\Error\ErrorInterface
      */
     public function setMessage(string $message): ErrorInterface;
 }
