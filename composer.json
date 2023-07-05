@@ -22,13 +22,11 @@
         "ext-mbstring": "*"
     },
     "require-dev": {
-        "cebe/php-openapi": "^1.7",
         "phpbench/phpbench": "^1.2",
         "phpmd/phpmd": "^2.13",
         "phpstan/phpstan": "^1.9",
         "phpunit/phpunit": "^9.6",
-        "squizlabs/php_codesniffer": "^3.7",
-        "symfony/yaml": "^6.3"
+        "squizlabs/php_codesniffer": "^3.7"
     },
     "suggest": {
         "symfony/yaml": "Required if you want to load from Yaml files."
