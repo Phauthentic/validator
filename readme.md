@@ -42,6 +42,14 @@ if (!$result->isValid()) {
  * [Quick Start](docs/Quick-Start.md)
  * [Architecture of the Library](docs/Architecture.md)
 
+## You don't like it? Try the alternatives!
+
+ * [Somnambulist Validation](https://github.com/somnambulist-tech/validation)
+ * [Symfony Validator](https://github.com/symfony/validator)
+ * [CakePHP Validator](https://github.com/cakephp/validation)
+ * [Rakit Validation](https://github.com/rakit/validation)
+ * [Laravel Validator](https://github.com/illuminate/validation)
+
 ## License
 
 [The MIT License (MIT)](LICENSE)
