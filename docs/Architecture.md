@@ -12,12 +12,16 @@ The goal of this library is to provide an easy to change and extend but also eas
 
 We had the following design goals regarding a validator library:
 
-* **Must** be dependency free.
-* **No** exception driven development. Exceptions are **forbidden** to be used to control business logic.
-* Every element of the system **should** be replaceable and extendable.
-* The validator **must** return a result object.
-* **Must** follow the SOLID principles.
-* Developer experience **may be** considered a higher priority than perfect abstraction.
+* **MUST** be dependency free.
+* **MUST NOT** use exception driven development. Exceptions are **forbidden** to be used to control business logic.
+* Every element of the system **SHOULD** be replaceable and extendable.
+* The validator **MUST** return a result object.
+* **MUST** follow the SOLID principles.
+* Developer experience **MAY BE** considered a higher priority than perfect abstraction.
+* Validation rules **SHOULD** be stateless.
+* Error messages **MUST** be translatable.
+  * The capability to translate the message **MUST** be there, but it is **NOT** required that the actual translation must be part of the library!
+  * Ideally a translation library can hook into the library.
 
 ### Rationale
 
@@ -50,7 +54,3 @@ The rule collection is thought to be shared via DI between multiple validators, 
 A trade-off to getting strict type rules is that the rules interface **does not** provide the `validate()` method.
 
 The convention is to pass the value that needs to be checked as first argument, followed by the arguments needed for this rule and optionally the context object as last argument.
-
-## Fields & Rule Descriptions
-
-TBD

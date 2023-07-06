@@ -25,7 +25,9 @@ class GlossaryMessageFormatter implements MessageFormatterInterface
      */
     protected array $glossary = [
         'rule.notEmpty.default' => 'The field {{fieldName}} can\'t be empty.',
-        'rule.between.default' => 'The value {{value}} of field {{fieldName}} is not between {{min}} and {{max}}'
+        'rule.between.default' => 'The value {{value}} of field {{fieldName}} is not between {{min}} and {{max}}.',
+        'rule.email.default' => '{{value}} is not a valid email address.',
+        'rule.type.default' => 'The type does not match the expected type.',
     ];
 
     public function formatMessage(ContextInterface $context): string

@@ -7,9 +7,15 @@ namespace Phauthentic\Validator\Rule;
 /**
  *
  */
-class IsBool extends AbstractRule
+class Type extends AbstractRule
 {
-    public const NAME = 'isBool';
+    public const NAME = 'type';
+
+    protected const MESSAGE = 'rule.type.default';
+
+    protected array $requiredArguments = [
+        'type'
+    ];
 
     /**
      * @inheritDoc
@@ -19,12 +25,9 @@ class IsBool extends AbstractRule
         return static::NAME;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function getMessage(): string
     {
-        return 'rule.isBool';
+        return self::MESSAGE;
     }
 
     public function validate(
@@ -32,14 +35,13 @@ class IsBool extends AbstractRule
         ArgumentCollectionInterface $arguments,
         ContextInterface $context
     ): bool {
-        if (is_string($value)) {
-            return $value === 'true' || $value === 'false';
+        $this->checkRequiredArguments($arguments);
+
+        $type = $arguments->get('type');
+        if (is_string($type)) {
+            $type = [$type];
         }
 
-        if (is_int($value)) {
-            return $value === 1 || $value === 0;
-        }
-
-        return is_bool($value);
+        return in_array(gettype($value), $type, true);
     }
 }

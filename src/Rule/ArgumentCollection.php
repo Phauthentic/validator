@@ -71,7 +71,19 @@ class ArgumentCollection implements ArgumentCollectionInterface
      */
     public function get(string $name): mixed
     {
+        $this->assertArgumentExists($name);
+
         return $this->arguments[$name];
+    }
+
+    public function assertArgumentExists(string $name): void
+    {
+        if (!$this->has($name)) {
+            throw new ValidatorException(sprintf(
+                'Argument `%s` does not exist in the collection.',
+                $name
+            ));
+        }
     }
 
     public function getAs(string $name, string $type): string|int|null|float|bool

@@ -7,9 +7,9 @@ namespace Phauthentic\Validator\Rule;
 /**
  *
  */
-class IsBool extends AbstractRule
+class Email extends AbstractRule
 {
-    public const NAME = 'isBool';
+    public const NAME = 'email';
 
     /**
      * @inheritDoc
@@ -24,7 +24,7 @@ class IsBool extends AbstractRule
      */
     public function getMessage(): string
     {
-        return 'rule.isBool';
+        return 'rule.email.default';
     }
 
     public function validate(
@@ -32,14 +32,7 @@ class IsBool extends AbstractRule
         ArgumentCollectionInterface $arguments,
         ContextInterface $context
     ): bool {
-        if (is_string($value)) {
-            return $value === 'true' || $value === 'false';
-        }
-
-        if (is_int($value)) {
-            return $value === 1 || $value === 0;
-        }
-
-        return is_bool($value);
+        return filter_var($value, FILTER_VALIDATE_EMAIL)
+            && preg_match('/@.+\./', $value);
     }
 }
