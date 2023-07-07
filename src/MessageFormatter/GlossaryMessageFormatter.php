@@ -28,6 +28,8 @@ class GlossaryMessageFormatter implements MessageFormatterInterface
         'rule.between.default' => 'The value {{value}} of field {{fieldName}} is not between {{min}} and {{max}}.',
         'rule.email.default' => '{{value}} is not a valid email address.',
         'rule.type.default' => 'The type does not match the expected type.',
+        'rule.inList.default' => '{{value}} is not in the list.',
+        'rule.count.default' => '{{value}} does not match {{count}}.'
     ];
 
     public function formatMessage(ContextInterface $context): string
@@ -62,10 +64,28 @@ class GlossaryMessageFormatter implements MessageFormatterInterface
             return '{{' . $value . '}}';
         };
 
-        $keys = (array_map($func, array_keys($templateVars)));
-        $values = array_values($templateVars);
+        foreach ($templateVars as $variable => $value) {
+            $templateString = str_replace(
+                '{{' . $variable . '}}',
+                $this->typeToString($value),
+                $templateString
+            );
+        }
 
-        return str_replace($keys, $values, $templateString);
+        return $templateString;
+    }
+
+    protected function typeToString(mixed $value): string
+    {
+        return match (gettype($value)) {
+            'resource' => 'Resource',
+            'resource (closed)' => 'Resource (closed)',
+            'object' => get_class($value),
+            'array' => 'Array',
+            'NULL' => 'NULL',
+            'unknown type' => 'unknown data type',
+            default => (string)$value,
+        };
     }
 
     /**

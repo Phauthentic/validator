@@ -22,7 +22,7 @@ class Count extends AbstractRule
     public const SMALLER_THAN = '<';
     public const GREATER_THAN = '>';
 
-    protected const MESSAGE = 'The count of `%s` does not match the expected number of `%s`.';
+    protected const MESSAGE = 'rule.count.default';
 
     protected array $requiredArguments = [];
 

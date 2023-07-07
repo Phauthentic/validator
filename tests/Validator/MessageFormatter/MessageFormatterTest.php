@@ -10,6 +10,7 @@ use Phauthentic\Validator\MessageFormatter\GlossaryMessageFormatter;
 use Phauthentic\Validator\Rule\ArgumentCollection;
 use Phauthentic\Validator\Rule\Between;
 use Phauthentic\Validator\Rule\Context;
+use Phauthentic\Validator\Rule\Count;
 use Phauthentic\Validator\Rule\RuleDefinition;
 use PHPUnit\Framework\TestCase;
 
